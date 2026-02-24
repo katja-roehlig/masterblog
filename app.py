@@ -1,41 +1,35 @@
 from flask import Flask, redirect, render_template, request, url_for
 import json
-import uuid
 import random
 
 app = Flask(__name__)
 
 
-# posts = [
-#     {
-#         "id": 1,
-#         "author": "John Doe",
-#         "title": "First Post",
-#         "content": "This is my first post.",
-#     },
-#     {
-#         "id": 2,
-#         "author": "Jane Doe",
-#         "title": "Second Post",
-#         "content": "This is another post.",
-#     },
-# ]
-# with open("blog_storage.json", "w") as newfile:
-#     json_string = json.dumps(posts)
-#     newfile.write(json_string)
 def load_posts():
+    """
+    Get the blog list from the json file
+    :return blog list
+    """
     with open("blog_storage.json", "r") as file:
         blog_list = json.load(file)
         return blog_list
 
 
 def save_posts(blog_list):
+    """
+    Saves the blog list in the json file
+
+    :param blog list
+    """
     with open("blog_storage.json", "w") as newfile:
         json.dump(blog_list, newfile)
 
 
 @app.route("/")
 def index():
+    """
+    Displays all blogs using index.html
+    """
     with open("blog_storage.json", "r") as file:
         blog_list = json.load(file)
         return render_template("index.html", blogs=blog_list)
@@ -43,6 +37,9 @@ def index():
 
 @app.route("/add", methods=["GET", "POST"])
 def add():
+    """
+    Adds a new blog entry, saves it, and displays it
+    """
     if request.method == "POST":
         new_id = random.randint(1, 1000000)
         title = request.form.get("title")
@@ -60,6 +57,11 @@ def add():
 
 @app.route("/delete/<int:post_id>", methods=["POST"])
 def delete(post_id):
+    """
+    Deletes a blog entry from the list
+
+    :param id of the blog entry
+    """
     blog_list = load_posts()
     new_list = [post for post in blog_list if post["id"] != post_id]
     save_posts(new_list)
@@ -68,6 +70,11 @@ def delete(post_id):
 
 @app.route("/update/<int:post_id>", methods=["GET", "POST"])
 def update(post_id):
+    """
+    Updates a blog entry and displays the entire blog list
+
+    :param id of the blog to be edited
+    """
     blog_list = load_posts()
     blog_found = False
     for blog in blog_list:
