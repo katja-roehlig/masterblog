@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Update your blog</h1>
+    <form action="" method="POST">
+      <label for="title">Title of the blog:</label>
+      <input type="text" id="title" name="title" value="{{blog.title}}" />
+      <label for="author">Author: </label>
+      <input type="text" id="author" name="author" value="{{blog.author}}" />
+      <label for="content"> Content: </label>
+      <textarea id="content" name="content">{{blog.content}}</textarea>
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>

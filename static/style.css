@@ -20,8 +20,28 @@ h1 {
 
 .post h2 {
   margin-top: 0;
+  color: darkorange;
 }
 
 .post p {
   margin: 10px 0;
+}
+
+.button-container {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+button {
+  padding: 7px 30px;
+  border: none;
+  border-radius: 5px;
+}
+.delete-button {
+  background-color: rgb(201, 44, 44);
+  color: white;
+  font-weight: bold;
+}
+.update-button {
+  background-color: rgb(251, 209, 154);
 }
