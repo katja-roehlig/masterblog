@@ -3,15 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='form.css') }}"
+    />
+    <title>Update</title>
   </head>
   <body>
     <h1>Update your blog</h1>
-    <form action="" method="POST">
-      <label for="title">Title of the blog:</label>
-      <input type="text" id="title" name="title" value="{{blog.title}}" />
-      <label for="author">Author: </label>
-      <input type="text" id="author" name="author" value="{{blog.author}}" />
+    <form action="" method="POST" class="form">
+      <div class="data-wrapper">
+        <div class="input-wrapper">
+          <label for="title">Title of the blog:</label>
+          <input type="text" id="title" name="title" value="{{blog.title}}" />
+        </div>
+        <div class="input-wrapper">
+          <label for="author">Author: </label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            value="{{blog.author}}"
+          />
+        </div>
+      </div>
       <label for="content"> Content: </label>
       <textarea id="content" name="content">{{blog.content}}</textarea>
       <button type="submit">Update</button>

@@ -49,7 +49,7 @@ def add():
         author = request.form.get("author")
         content = request.form.get("content")
         new_blog = {"id": new_id, "title": title, "author": author, "content": content}
-        blog_list = load_posts
+        blog_list = load_posts()
         blog_list.append(new_blog)
         save_posts(blog_list)
 

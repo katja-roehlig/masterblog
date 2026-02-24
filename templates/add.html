@@ -3,17 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='form.css') }}"
+    />
     <title>Document</title>
   </head>
   <body>
-    <h1>Create a new blog</h1>
-    <form action="" method="POST">
-      <label for="title">Title of the blog:</label>
+    <!-- <h1>Create a new blog</h1>
+    <form action="" method="POST" class="form">
+      <label for="title">Title: </label>
       <input type="text" id="title" name="title" required />
       <label for="author">Author: </label>
       <input type="text" id="author" name="author" required />
       <label for="content"> Content: </label>
       <textarea id="conten" name="content" required></textarea>
+      <button type="submit">Post it!</button>
+    </form> -->
+
+    <h1>Create a new blog</h1>
+    <form action="" method="POST" class="form">
+      <div class="data-wrapper">
+        <div class="input-wrapper">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div class="input-wrapper">
+          <label for="author">Author: </label>
+          <input type="text" id="author" name="author" required />
+        </div>
+      </div>
+      <label for="content"> Content: </label>
+      <textarea id="content" name="content" required></textarea>
       <button type="submit">Post it!</button>
     </form>
   </body>
